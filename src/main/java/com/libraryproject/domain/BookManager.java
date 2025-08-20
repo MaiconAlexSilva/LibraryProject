@@ -21,5 +21,30 @@ public class BookManager {
             e.printStackTrace();
         }
     }
+
+    public static void deletBook(int id){
+        String sql = "DELETE FROM `project_library`.`Book` WHERE (`idBook` = '%d');"
+                .formatted(id);
+        try {Connection conn = ConnectionDatabase.getConnection();
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(sql);
+            log.info("Rows Affected '{}' ", rowsAffected);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateBook(Book book){
+        String sql = "UPDATE `project_library`.`Book` SET `book_name` = '%s', `author_name` = '%s';"
+                .formatted(book.getBookName(), book.getAuthorBook());
+        try {Connection conn = ConnectionDatabase.getConnection();
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(sql);
+            log.info("Rows Affected '{}' ", rowsAffected);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }
 
