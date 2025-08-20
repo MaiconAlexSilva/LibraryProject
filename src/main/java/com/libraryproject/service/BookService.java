@@ -1,8 +1,8 @@
 package com.libraryproject.service;
 
 
-import com.libraryproject.domain.Book;
-import com.libraryproject.domain.BookManager;
+import com.libraryproject.domain.Book.Book;
+import com.libraryproject.domain.Book.BookManager;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -17,6 +17,7 @@ public class BookService {
     }
 
     public static void updateBook (Book book){
+        idChecker(book.getId());
         BookManager.updateBook(book);
     }
 

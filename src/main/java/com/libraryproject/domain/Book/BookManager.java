@@ -1,4 +1,4 @@
-package com.libraryproject.domain;
+package com.libraryproject.domain.Book;
 
 
 import com.libraryproject.conn.ConnectionDatabase;
@@ -35,8 +35,9 @@ public class BookManager {
     }
 
     public static void updateBook(Book book){
-        String sql = "UPDATE `project_library`.`Book` SET `book_name` = '%s', `author_name` = '%s';"
-                .formatted(book.getBookName(), book.getAuthorBook());
+        //"UPDATE `anime_store`.`producer` SET `name` = '%s ' WHERE (`id` = '%d');"
+        String sql = "UPDATE `project_library`.`Book` SET `book_name` = '%s', `author_name` = '%s' WHERE (`idBook` = '%d');"
+                .formatted(book.getBookName(), book.getAuthorBook(), book.getId());
         try {Connection conn = ConnectionDatabase.getConnection();
             Statement stmt = conn.createStatement();
             int rowsAffected = stmt.executeUpdate(sql);
